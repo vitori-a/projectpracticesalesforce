@@ -18,6 +18,28 @@ public without sharing class CEPController {
         return results;
     }
 
+    @AuraEnabled
+    public static Id atualizarEndereco(
+        String accountId, String cep, String logradouro, String localidade, String uf, String pais) {
+
+        Account acc = new Account(Id = accountId);
+        acc.BillingPostalCode = cep;
+        acc.BillingCity = localidade;
+        acc.BillingState = uf;
+        acc.BillingStreet = logradouro;
+        acc.BillingCountry = pais;
+            
+        acc.ShippingPostalCode = cep;
+        acc.ShippingCity = localidade;
+        acc.ShippingState = uf;
+        acc.ShippingStreet = logradouro;
+        acc.ShippingCountry = pais;
+
+        System.debug('cep: ' + cep);
+        update acc;
+        return acc.Id;
+    }
+
     public class Endereco {
         @AuraEnabled
         public String cep {get;set;}
