@@ -1,16 +1,16 @@
 public without sharing class CEPController {
    
     @AuraEnabled
-    public static Endereco consultarCEP(String cep){
+    public static Address searchCEP(String cep){
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://viacep.com.br/ws/'+cep+'/json/');
         request.setMethod('GET');
         HttpResponse response = http.send(request);
-        Endereco results = new Endereco();
+        Address results = new Address();
         if(response.getStatusCode() == 200) {
            
-            results = (Endereco) JSON.deserialize(response.getBody(), Endereco.class);
+            results = (Address) JSON.deserialize(response.getBody(), Address.class);
             system.debug(results);
             system.debug(cep);
         }
@@ -19,7 +19,7 @@ public without sharing class CEPController {
     }
 
     @AuraEnabled
-    public static Id atualizarEndereco(
+    public static Id updateAddressAccount(
         String accountId, String cep, String logradouro, String localidade, String uf, String pais) {
 
         Account acc = new Account(Id = accountId);
@@ -40,7 +40,7 @@ public without sharing class CEPController {
         return acc.Id;
     }
 
-    public class Endereco {
+    public class Address {
         @AuraEnabled
         public String cep {get;set;}
         @AuraEnabled
