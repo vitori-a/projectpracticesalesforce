@@ -1,16 +1,16 @@
 public without sharing class CEPController {
    
     @AuraEnabled
-    public static Address searchCEP(String cep){
+    public static Endereco searchCEP(String cep){
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://viacep.com.br/ws/'+cep+'/json/');
         request.setMethod('GET');
         HttpResponse response = http.send(request);
-        Address results = new Address();
+        Endereco results = new Endereco();
         if(response.getStatusCode() == 200) {
            
-            results = (Address) JSON.deserialize(response.getBody(), Address.class);
+            results = (Endereco) JSON.deserialize(response.getBody(), Endereco.class);
             system.debug(results);
             system.debug(cep);
         }
@@ -40,7 +40,7 @@ public without sharing class CEPController {
         return acc.Id;
     }
 
-    public class Address {
+    public class Endereco {
         @AuraEnabled
         public String cep {get;set;}
         @AuraEnabled
