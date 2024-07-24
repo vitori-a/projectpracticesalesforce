@@ -1,0 +1,58 @@
+<template>
+    <lightning-card title="Atualizar endereço">
+        <div class="slds-m-around_medium">
+            <template if:true={showSuccessMessage}>
+                <div class="slds-box slds-theme_success slds-m-bottom_medium">
+                    Endereço atualizado com sucesso!
+                </div>
+            </template>
+            <template if:true={showCEPForm}>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input label=" Digite o CEP:" value={cep} onchange={handleCEPChange}></lightning-input>
+                        <div class="button-container">
+                            <lightning-button label="Buscar Endereço" variant="brand" onclick={searchCEP}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={billingAddress}>
+                <div class="slds-col slds-size_1-of-1">
+                    <h2>Endereço de Cobrança</h2>
+                    <div>
+                        <lightning-input label="Endereço" value={endereco.logradouro} onchange={handleLogradouroChange}></lightning-input>
+                        <lightning-input label="Bairro" value={endereco.bairro} onchange={handleBairroChange}></lightning-input>
+                        <lightning-input label="Cidade" value={endereco.localidade} onchange={handleLocalidadeChange}></lightning-input>
+                        <lightning-input label="UF" value={endereco.uf} onchange={handleUFChange}></lightning-input>
+                        <div class="button-container">
+                            <lightning-button label="Salvar" variant="brand" onclick={updateBillingAddress}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={showShippingQuestion}>
+                <div class="slds-m-around_medium">
+                    <p>O endereço de entrega é o mesmo que o de cobrança?</p>
+                    <div class="button-container">
+                        <lightning-button label="Sim" value="yes" onclick={handleShippingQuestion}></lightning-button>
+                        <lightning-button label="Não" value="no" onclick={handleShippingQuestion}></lightning-button>
+                    </div>
+                </div>
+            </template>
+            <template if:true={shippingAddress}>
+                <div class="slds-col slds-size_1-of-1">
+                    <h2>Endereço de Entrega</h2>
+                    <div>
+                        <lightning-input label="Endereço de Entrega" value={endereco.logradouro} onchange={handleLogradouroChange}></lightning-input>
+                        <lightning-input label="Bairro" value={endereco.bairro} onchange={handleBairroChange}></lightning-input>
+                        <lightning-input label="Cidade" value={endereco.localidade} onchange={handleLocalidadeChange}></lightning-input>
+                        <lightning-input label="UF" value={endereco.uf} onchange={handleUFChange}></lightning-input>
+                        <div class="button-container">
+                            <lightning-button label="Salvar" variant="brand" onclick={updateShippingAddress}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
