@@ -1,18 +1,17 @@
-# Salesforce DX Project: Next Steps
+# Integração ViaCEP com Salesforce
+### Visão Geral
+O searchCEP é um Lightning Web Component (LWC) desenvolvido para o Salesforce que permite aos usuários buscar informações de endereço usando um código postal brasileiro (CEP) via a API do ViaCEP. Com este componente, os usuários podem digitar um CEP, visualizar os detalhes do endereço correspondente e salvar essas informações no registro Account no Salesforce.
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+### Funcionalidades
+- **Consulta de CEP:** Permite ao usuário buscar os detalhes de um endereço a partir da API do ViaCEP inserindo um CEP.
+- **Exibição de Endereço:** Exibe as informações do endereço recuperadas da API, incluindo rua, bairro, cidade, estado, etc.
+- **Salvar no Salesforce:** Possibilita salvar os detalhes do endereço recuperado em um registro de Account no Salesforce.
 
-## How Do You Plan to Deploy Your Changes?
-
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+### Componentes
+#### Classe Apex: CEPController
+- **Propósito:** Gerencia a lógica para consultar a API do ViaCEP e atualizar o registro de Account no Salesforce.
+#### Lightning Web Component: searchCEP
+**Propósito:** Fornece a interface do usuário para:
+- Digitar um CEP.
+- Visualizar os detalhes do endereço.
+- Salvar as informações no registro de Account.
