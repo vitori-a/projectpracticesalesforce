@@ -15,3 +15,7 @@ O searchCEP é um Lightning Web Component (LWC) desenvolvido para o Salesforce q
 - Digitar um CEP.
 - Visualizar os detalhes do endereço.
 - Salvar as informações no registro de Account.
+
+Demonstração:
+https://github.com/user-attachments/assets/bd16d0cf-f628-417d-b4ef-293341e23a9a
+
