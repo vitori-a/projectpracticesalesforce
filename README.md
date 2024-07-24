@@ -17,5 +17,5 @@ O searchCEP é um Lightning Web Component (LWC) desenvolvido para o Salesforce q
 - Salvar as informações no registro de Account.
 
 Demonstração:
-https://github.com/user-attachments/assets/bd16d0cf-f628-417d-b4ef-293341e23a9a
+https://github.com/user-attachments/assets/66ec7273-99bd-4a07-9690-b6ed2c806827
 
