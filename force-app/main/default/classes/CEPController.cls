@@ -9,33 +9,33 @@ public without sharing class CEPController {
         HttpResponse response = http.send(request);
         Endereco results = new Endereco();
         if(response.getStatusCode() == 200) {
-           
             results = (Endereco) JSON.deserialize(response.getBody(), Endereco.class);
             system.debug(results);
             system.debug(cep);
         }
-
         return results;
     }
 
     @AuraEnabled
-    public static Id updateAddressAccount(
-        String accountId, String cep, String logradouro, String localidade, String uf, String pais) {
-
+    public static Id updateBillingAddress(String accountId, String cep, String logradouro, String localidade, String uf, String numero) {
         Account acc = new Account(Id = accountId);
         acc.BillingPostalCode = cep;
         acc.BillingCity = localidade;
         acc.BillingState = uf;
         acc.BillingStreet = logradouro;
-        acc.BillingCountry = pais;
-            
+        acc.BillingCountry = 'Brasil';
+        update acc;
+        return acc.Id;
+    }
+
+    @AuraEnabled
+    public static Id updateShippingAddress(String accountId, String cep, String logradouro, String localidade, String uf, String numero) {
+        Account acc = new Account(Id = accountId);
         acc.ShippingPostalCode = cep;
         acc.ShippingCity = localidade;
         acc.ShippingState = uf;
         acc.ShippingStreet = logradouro;
-        acc.ShippingCountry = pais;
-
-        System.debug('cep: ' + cep);
+        acc.ShippingCountry = 'Brasil';
         update acc;
         return acc.Id;
     }
